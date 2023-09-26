@@ -1,0 +1,12 @@
+.main-content {
+    margin-top: calc(var(--header-height) + 1rem);
+    padding: 2rem; /* Sesuaikan sesuai kebutuhan */
+  }
+  
+  /* Gaya tambahan untuk konten utama */
+  .main-content .container {
+    background-color: #f9f9f9; /* Contoh warna latar belakang */
+    border-radius: 10px; /* Contoh radius sudut */
+    padding: 20px;
+  }
+  
