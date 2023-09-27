@@ -3,11 +3,11 @@ class MapelKontroller {
         res.render("mapelList");
     }
     async indexAdd(req, res) {
-        res.render("kelasAdd");
+        res.render("mapelAdd");
     }
 
     async indexEdit(req, res) {
-        res.render("kelasEdit");
+        res.render("mapelEdit");
     }
 }
 

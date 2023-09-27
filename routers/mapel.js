@@ -6,8 +6,8 @@ const mapel = express.Router();
 
 const mapelKontroller = new MapelKontroller();
 mapel.get("/", mapelKontroller.index);
-// kelas.get("/add", kelasController.indexAdd);
-// kelas.get("/edit", kelasController.indexEdit);
+mapel.get("/add", mapelKontroller.indexAdd);
+mapel.get("/edit", mapelKontroller.indexEdit);
 
 
 module.exports = mapel;
