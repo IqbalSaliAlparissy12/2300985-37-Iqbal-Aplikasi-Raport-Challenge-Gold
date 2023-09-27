@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <%- include('navbar'); %>
+
+    <div class="main-content" id="main-content">
+      <div class="container">
+        <!-- Konten utama berada di sini -->
+        <h1>Mata Pelajaran</h1>
+
+        <a
+          href="/mata-pelajaran/add"
+          class="btn btn-success mb-2"
+          style="margin-top: 20px; margin-bottom: 20px";
+          >Add</a
+        >
+
+        <div  class="table-responsive"  style="margin-top: 20px;">
+          <table class="table">
+            <caption>
+              Mata Pelajaran List
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Mata Pelajaran</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Matematika</td>
+                <td>Kelas 1</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Bahasa Indonesia</td>
+                <td>Kelas 2</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Bahasa Inggris</td>
+                <td>Kelas 4</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

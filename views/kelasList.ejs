@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <%- include('navbar'); %>
+
+    <div class="main-content" id="main-content">
+      <div class="container">
+        <!-- Konten utama berada di sini -->
+        <h1>List Kelas</h1>
+
+        <a
+          href="/kelas/add"
+          class="btn btn-success mb-2"
+          style="margin-top: 20px; margin-bottom: 20px";
+          >Add</a
+        >
+
+        <div  class="table-responsive"  style="margin-top: 20px;">
+          <table class="table">
+            <caption>
+              List of users
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">Deskripsi</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Kelas 1</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Kelas 2</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>
+                  <a href="/kelas/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

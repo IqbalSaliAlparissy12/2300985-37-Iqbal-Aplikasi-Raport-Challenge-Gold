@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <%- include('navbar'); %>
+
+    <div class="main-content" id="main-content">
+      <div class="container">
+        <h1>Edit Wali Kelas</h1>
+
+        <form>
+          <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
+            <label for="exampleFormControlInput1">Nama Lengkap Guru</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleFormControlInput1"
+              placeholder="masukan nama"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="exampleFormControlSelect1">Kelas</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>-- Pilih --</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="exampleFormControlSelect1">Password</label>
+            <div className="control">
+              <input type="password" className="input" placeholder="*****" />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="exampleFormControlSelect1">Konfirmasi Password</label>
+            <div className="control">
+              <input type="password" className="input" placeholder="*****" />
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="exampleFormControlTextarea1">Deskripsi Guru</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <a
+            href="/wali"
+            class="btn btn-success mb-2"
+            style="margin-top: 20px; margin-bottom: 20px; background-color: aqua; color: black;"
+            ;
+            >Update</a
+          >
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

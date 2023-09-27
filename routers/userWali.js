@@ -1,10 +1,12 @@
 const express = require("express");
-const home = express.Router();
+const wali = express.Router();
 
 const WaliController = require("../controllers/user.Wali.controller");
 
 const waliController = new WaliController();
-home.get("/", waliController.index);
+wali.get("/", waliController.index);
+wali.get("/add", waliController.indexAdd);
+wali.get("/edit", waliController.indexEdit);
 
 
-module.exports = home;
+module.exports = wali;
