@@ -5,6 +5,7 @@ const userWali = require("./userWali");
 const kelas = require("./kelas");
 const mapel = require("./mapel");
 const guru = require("./guru");
+const siswa = require("./siswa");
 
 const router = express.Router();
 
@@ -14,5 +15,6 @@ router.use("/wali", userWali);
 router.use("/kelas", kelas);
 router.use("/mapel", mapel);
 router.use("/guru", guru);
+router.use("/siswa", siswa);
 
 module.exports = router;

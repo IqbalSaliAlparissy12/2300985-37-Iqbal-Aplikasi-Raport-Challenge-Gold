@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <%- include('navbar'); %>
+
+    <div class="main-content" id="main-content">
+      <div class="container">
+        <!-- Konten utama berada di sini -->
+        <h1>List Siswa per Kelas</h1>
+
+    
+        <a
+          href="/siswa/add"
+          class="btn btn-success mb-2"
+          style="margin-top: 20px; margin-bottom: 20px";
+          >Add</a
+        >
+        
+
+        <div  class="table-responsive"  style="margin-top: 20px;">
+          <table class="table">
+            <caption>
+              List of Siswa
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nomor Induk Sekolah</th>
+                <th scope="col">Nama Lengkap</th>
+                <th scope="col">NISN</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>11111</td>
+                <td>Rain</td>
+                <td>22222</td>
+                <td>1</td>
+                <td>
+                  <a href="/siswa/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>111112</td>
+                <td>Test</td>
+                <td>222223</td>
+                <td>1</td>>
+                <td>
+                  <a href="/siswa/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>111113</td>
+                <td>Liangan</td>
+                <td>222224</td>
+                <td>1</td>
+                <td>
+                  <a href="/siswa/edit" class="btn btn-info btn-sm">Edit</a>
+                  <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
