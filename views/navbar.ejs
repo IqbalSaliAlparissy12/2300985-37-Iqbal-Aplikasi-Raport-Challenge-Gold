@@ -19,15 +19,28 @@
       <nav class="nav">
         <div> <a href="#" class="nav_logo"> <i class='bx bx-message-square-detail nav_logo-icon'></i> <span
               class="nav_logo-name">Aplikasi Raport</span> </a>
-          <div class="nav_list"> <a href="#" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span
-                class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i>
-              <span class="nav_name">Users</span> </a> <a href="#" class="nav_link"> <i
-                class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a> <a
-              href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span>
-            </a> <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span>
-            </a> <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span
-                class="nav_name">Stats</span> </a> </div>
-        </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+
+        <div class="nav_list"> 
+          <a href="/home" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <spanclass="nav_name">Dashboard</span> </a> 
+          <a class="nav_link"> <i class='bx bx-user nav_icon'></i><span class="nav_name">Users</span> </a> 
+          <div class="submenu" >
+            <a href="/wali" class="nav_link" > <span class="nav_name" style="padding-left: 2rem;">Wali Kelas</span> </a> 
+            <a href="/guru" class="nav_link"> <span class="nav_name" style="padding-left: 2rem;">Guru</span> </a>
+            <a href= "/siswa" class="nav_link"></i><span class="nav_name" style="padding-left: 2rem;">Siswa</span> </a> 
+
+            <!-- Add more submenu items as needed -->
+         </div>
+          <a href="/mapel" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Mata Pelajaran</span> </a> 
+          <a href="/kelas" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Kelas</span></a> 
+          <a href="/identitas-sekolah" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Identitas Sekolah</span></a> 
+          <a href="/absensi" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Absensi</span> </a> 
+          <a href="/kompetensi-spiritual" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Kompetensi Spiritual</span></a> 
+          <a href="/kompetensi-sosial" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Kompetensi Sosial</span> </a> 
+       
+        </div>
+
+
+        </div> <a href="/login" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
             class="nav_name">SignOut</span> </a>
       </nav>
     </div>
