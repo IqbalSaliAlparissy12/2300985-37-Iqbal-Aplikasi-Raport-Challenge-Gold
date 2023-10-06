@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      Kelas: {
+      kelas: {
         type: Sequelize.STRING
       },
       strKelasDetail: {

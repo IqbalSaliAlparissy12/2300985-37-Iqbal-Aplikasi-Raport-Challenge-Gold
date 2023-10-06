@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tblKelas.init({
-    Kelas: DataTypes.STRING,
+    kelas: DataTypes.STRING,
     strKelasDetail: DataTypes.STRING
   }, {
     sequelize,
