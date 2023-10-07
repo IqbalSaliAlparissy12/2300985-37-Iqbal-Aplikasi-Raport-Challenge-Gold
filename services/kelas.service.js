@@ -1,20 +1,21 @@
-const kelas = require("../models")
+const {tblKelas} = require("../models")
 
 class KelasService{
     constructor(){
-        this.newKelas = kelas;
+        this.newKelas = tblKelas;
     }
-
     async getKelas(id){
         let data;
         if(id){
-            data = await this.newKelas.findAll({
-                id
+            data = await this.newKelas.findOne({
+                where:{
+                    id
+                } 
             })
         }else{
             data = await this.newKelas.findAll();
         }
-
+        return data
     }
 }
 

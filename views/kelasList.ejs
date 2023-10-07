@@ -38,11 +38,11 @@
             </thead>
             
             <tbody>
-              <% kelasData.forEach((data, index) => { %>
+              <% kelas.forEach((data,index) => { %>
                 <tr>
                   <th scope="row"><%= index + 1 %></th>
-                  <td><%= data.nama %></td>
-                  <td><%= data.deskripsi %></td>
+                  <td><%= data.kelas %></td>
+                  <td><%= data.strKelasDetail %></td>
                   <td>
                     <a href="/kelas/edit/<%= kelas._id %>" class="btn btn-info btn-sm">Edit</a>
                     <button class="btn btn-danger btn-sm" onclick="deleteKelas('<%= kelas._id %>')">Delete</button>
@@ -50,6 +50,7 @@
                 </tr>
               <% }); %>
             </tbody>
+            
           </table>
         </div>
       </div>
