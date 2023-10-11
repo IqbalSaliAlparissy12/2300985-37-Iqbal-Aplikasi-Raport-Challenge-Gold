@@ -13,9 +13,26 @@ class KelasController {
     }
   }
 
+
+  //api
   async indexAdd(req, res) {
-    res.render("kelasAdd");
+    const payload = req.body;
+    const addKelas = await kelasService.addKelas(payload);
+    // res.render("kelasAdd");
+
+    res.status(201).json(addKelas);
   }
+
+  async pageCreateKelas(req, res) {
+
+    res.render(
+        "kelasAdd",
+     {
+
+    });
+  }
+
+
 
   async indexEdit(req, res) {
     res.render("kelasEdit");

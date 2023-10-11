@@ -17,6 +17,15 @@ class KelasService{
         }
         return data
     }
+
+    async addKelas(payload){
+        const date = new Date();
+        const {kelas, strKelasDetail} = payload
+        const inputKelas = this.newKelas.create({
+            kelas, strKelasDetail, createdAt : date, updatedAt : date
+        })
+        return inputKelas
+    }
 }
 
 module.exports = KelasService

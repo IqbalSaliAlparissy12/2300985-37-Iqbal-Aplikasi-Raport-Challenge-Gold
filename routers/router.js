@@ -6,8 +6,11 @@ const kelas = require("./kelas");
 const mapel = require("./mapel");
 const guru = require("./guru");
 const siswa = require("./siswa");
+const api = require("./api/api.kelas");
 
 const router = express.Router();
+
+router.use('/api', api);
 
 router.use("/home", home);
 router.use("/login", login);

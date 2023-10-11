@@ -16,7 +16,9 @@ app.set("views", "./views");
 // Config folder layouts
 app.set('layout', 'layouts/layouts');
 
+
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static("public"))
 
 //build in middleware
 app.use(express.json());

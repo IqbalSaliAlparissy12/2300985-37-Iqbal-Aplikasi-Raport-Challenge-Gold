@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
     <link rel="stylesheet" href="/css/home.css" />
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    script controll library tinymce -->
+    <!-- <script src="/js/index.js"></script> -->
   </head>
   <body>
     <%- include('navbar'); %>
@@ -15,10 +21,10 @@
       <div class="container">
         <h1>Add Kelas</h1>
 
-        <form>
+        <form id="create-kelas-form">
           <div class="form-group" style="margin-bottom: 15px">
             <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="kelas" required>
               <option>-- Pilih --</option>
               <option>1</option>
               <option>2</option>
@@ -34,14 +40,12 @@
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
+              id="strKelasDetail"
               placeholder="masukan Deskripsi kelas"
             />
           </div>
 
-          
-
-          <a
+          <!-- <a
             href="/kelas"
             class="btn btn-success mb-2"
             style="
@@ -52,9 +56,19 @@
             "
             ;
             >Add</a
-          >
+          > -->
+          <button type="submit" class="btn btn-primary float-right">
+            Tambah Kelas
+          </button>
         </form>
       </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
   </body>
 </html>
