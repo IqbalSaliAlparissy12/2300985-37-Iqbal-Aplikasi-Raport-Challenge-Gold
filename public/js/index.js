@@ -27,3 +27,28 @@ $(document).ready(function () {
       });
     });
   });
+
+  $(".delete-kelas").click(function () {
+    // Menyimpan referensi ke tombol "Hapus" yang diklik
+    var $deleteButton = $(this);
+  
+    // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+    const kelasId = $deleteButton.attr("id");
+  
+    // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+    $.ajax({
+        url: "/api/raport/kelas/" + kelasId,
+        type: "DELETE",
+        success: function (response) {
+            // Tindakan setelah berhasil menghapus komentar
+            alert("Kelas berhasil di hapus.");
+  
+            // Hapus elemen komentar dari DOM
+            location.reload();
+        },
+        error: function (error) {
+            console.error("Terjadi kesalahan saat menghapus komentar:", error);
+            alert("Gagal menghapus komentar.");
+        }
+    })
+  });

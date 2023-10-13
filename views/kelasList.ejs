@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
     <link rel="stylesheet" href="/css/home.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
   </head>
   <body>
     <%- include('navbar'); %>
@@ -44,8 +46,8 @@
                   <td><%= data.kelas %></td>
                   <td><%= data.strKelasDetail %></td>
                   <td>
-                    <a href="/kelas/edit/<%= kelas._id %>" class="btn btn-info btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm" onclick="deleteKelas('<%= kelas._id %>')">Delete</button>
+                    <a href="/kelas/edit/<%= data.id %>" class="btn btn-info btn-sm">Edit</a>
+                    <button id="<%= data.id %>" class="btn btn-danger btn-sm delete-kelas">Hapus</button>
                   </td>
                 </tr>
               <% }); %>

@@ -28,15 +28,24 @@ class KelasController {
     res.render(
         "kelasAdd",
      {
-
     });
   }
-
-
 
   async indexEdit(req, res) {
     res.render("kelasEdit");
   }
+
+  async deleteKelas(req, res) {
+    try {
+        const kelas = await kelasService.delete(req.params.id)
+        res.status(201).json({
+            data: kelas, message: "Berhasil menghapus kelas"
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Gagal menghapus kelas." });
+    }
+}
 }
 
 module.exports = KelasController;
