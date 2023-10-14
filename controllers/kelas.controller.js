@@ -47,6 +47,26 @@ class KelasController {
     res.render("kelasEdit");
   }
 
+  async updateKelas(req, res) {
+    try {
+      // Mendapatkan ID kelas dari parameter
+      const { id } = req.params;
+  
+      // Memanggil service untuk mendapatkan data kelas berdasarkan ID
+      const kelas = await kelasService.getKelas(id);
+  
+      if (!kelas) {
+        throw new Error('Kelas tidak ditemukan');
+      }
+  
+      // Menampilkan halaman edit dengan data kelas
+      res.status(201).json(kelas);
+    } catch (error) {
+      res.status(500).send(`Gagal menampilkan halaman edit kelas: ${error.message}`);
+    }
+  }
+  
+
   async deleteKelas(req, res) {
     try {
         const kelas = await kelasService.delete(req.params.id)
