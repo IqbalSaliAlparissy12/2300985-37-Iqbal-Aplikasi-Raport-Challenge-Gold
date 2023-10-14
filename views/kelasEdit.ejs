@@ -18,14 +18,14 @@
         <form>
           <div class="form-group" style="margin-bottom: 15px">
             <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>-- Pilih --</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
+            <select class="form-control" id="exampleFormControlSelect1" name="kelas">
+              <option value="">-- Pilih --</option>
+              <option value="1" <% if (kelas.kelas === "1") { %>selected<% } %>>1</option>
+              <option value="2" <% if (kelas.kelas === "2") { %>selected<% } %>>2</option>
+              <option value="3" <% if (kelas.kelas === "3") { %>selected<% } %>>3</option>
+              <option value="4" <% if (kelas.kelas === "4") { %>selected<% } %>>4</option>
+              <option value="5" <% if (kelas.kelas === "5") { %>selected<% } %>>5</option>
+              <option value="6" <% if (kelas.kelas === "6") { %>selected<% } %>>6</option>
             </select>
           </div>
 
@@ -36,10 +36,9 @@
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="masukan Deskripsi kelas"
+              value="<%= kelas.strKelasDetail %>"
             />
           </div>
-
-          
 
           <a
             href="/kelas"
@@ -50,9 +49,7 @@
               background-color: aqua;
               color: black;
             "
-            ;
-            >Add</a
-          >
+          >Edit Kelas</a>
         </form>
       </div>
     </div>

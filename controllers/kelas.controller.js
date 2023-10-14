@@ -13,6 +13,18 @@ class KelasController {
     }
   }
 
+  async kelasDetail(req, res){
+    try {
+      const id = req.params.id;
+      const kelasData = await kelasService.getKelas(id);
+      res.render("kelasEdit", {
+        kelas: kelasData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   //api
   async indexAdd(req, res) {
