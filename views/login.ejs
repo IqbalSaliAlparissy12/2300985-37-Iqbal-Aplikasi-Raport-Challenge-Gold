@@ -122,26 +122,22 @@
   <body>
     <div class="wrapper">
       <div class="logo">
-        <img
-          src="/images/favicon.png"
-          alt=""
-        />
+        <img src="/images/favicon.png" alt="" />
         <!-- Menggunakan EJS langsung dalam atribut src untuk menampilkan gambar -->
-        <!-- <img
-          src="<%= `./images/favicon.png` %>"
-          alt="Deskripsi gambar"
-        /> -->
-
+        <% if(messages.error) { %>
+        <div class="alert alert-danger" role="alert"><%= messages.error %></div>
+        <% } %>
       </div>
       <div class="text-center mt-4 name">Aplikasi Rapot YAH</div>
       <form class="p-3 mt-3">
         <div class="form-field d-flex align-items-center">
           <span class="far fa-user"></span>
           <input
-            type="text"
-            name="userName"
-            id="userName"
-            placeholder="Username"
+            type="email"
+            name="email"
+            class="form-control"
+            id="formEmail"
+            placeholder="name@example.com"
           />
         </div>
         <div class="form-field d-flex align-items-center">
@@ -149,23 +145,26 @@
           <input
             type="password"
             name="password"
-            id="pwd"
-            placeholder="Password"
+            class="form-control"
+            id="formPassword"
+            placeholder="Password anda"
           />
         </div>
 
         <!-- <button class="btn mt-3" href="/home">Login</button> -->
 
-        <button class="btn mt-3" onclick="location.href='/home'">Login</button>
-        
+        <button class="btn mt-3">Login</button>
       </form>
       <!-- <div class="text-center fs-6">
         <a href="#">Forget password?</a> or <a href="#">Sign up</a>
       </div> -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
   </body>
 </html>

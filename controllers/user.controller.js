@@ -3,6 +3,12 @@ const UserService = require("../services/user.service");
 const userService = new UserService();
 
 class UserController {
+    async indexRegister(req, res) {
+        res.render("userAdminAdd", {
+             tblUser: req.tblUser
+        })
+    }
+
     async register(req, res) {
         try {
             await userService.store(req.body);
@@ -10,7 +16,7 @@ class UserController {
             res.status(201).json({ message: 'Registrasi berhasil' });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: 'Gagal mendaftar' });
+            res.status(400).json({ error: error.message});
         }
     }
 }

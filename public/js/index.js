@@ -1,4 +1,4 @@
-//default function create submit
+//Create Kelas
 $(document).ready(function () {
     $("#create-kelas-form").submit(function (event) {
       event.preventDefault(); // Menghentikan pengiriman formulir secara default
@@ -51,4 +51,35 @@ $(document).ready(function () {
             alert("Gagal menghapus komentar.");
         }
     })
+  });
+
+  $("#registration-form").submit(function (event) {
+    event.preventDefault();
+  
+    const name = $("#name").val();
+    const email = $("#email").val();
+    const role = $("#strRole").val()
+    const password = $("#password").val();
+    const repassword = $("#repassword").val();
+  
+    if (password !== repassword) {
+      alert("Maaf konfirmasi password yang and masukan tidak sesuai")
+    } else {
+      // Kirim data registrasi ke server menggunakan AJAX atau fetch
+      $.ajax({
+        url: "/api/raport/users/register", // Ganti dengan rute API registrasi Anda
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ strName: name, strEmail: email, strPassword: password, strRole: role }),
+        success: function (response) {
+          // Tampilkan pesan sukses atau redirect ke halaman login
+          alert("Registrasi berhasil! Silakan masuk.");
+          window.location.href = "/login";
+        },
+        error: function (error) {
+          console.error("Terjadi kesalahan: " + JSON.stringify(error));
+          alert("Gagal mendaftar. Silakan coba lagi.");
+        },
+      });
+    }
   });

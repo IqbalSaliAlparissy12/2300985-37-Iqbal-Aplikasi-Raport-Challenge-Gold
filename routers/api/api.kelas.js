@@ -16,6 +16,6 @@ const UserController = require("../../controllers/user.controller");
 const userController = new UserController;
 
 // Endpoint user
-api.post('/v1/users/register', userController.register);
+api.post('/raport/users/register', userController.register);
 
 module.exports = api;

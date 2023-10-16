@@ -7,11 +7,17 @@ class UserService {
   }
   async store(payload) {
     const date = new Date();
-    const { strName, strEmail, strPassword } = payload;
+    const { strName, strEmail, strPassword, strRole } = payload;
+    const existingEmail = await this.findByEmail(strEmail);
+
+    if(existingEmail){
+      throw new Error("Email Sudah Terdaftar!")
+    }
+
     const encript = await bcrypt.hash(strPassword, 10);
 
     // Simpan data pengguna ke database
-    const data = await this.userModel.create({
+    const inputUser = await this.userModel.create({
       strName,
       strEmail,
       strRole,
@@ -19,6 +25,11 @@ class UserService {
       createdAt: date,
       updatedAt: date,
     });
+    return inputUser;
+  }
+
+  async findByEmail(strEmail){
+    const data = await this.userModel.findOne({where : {strEmail}})
     return data;
   }
 }

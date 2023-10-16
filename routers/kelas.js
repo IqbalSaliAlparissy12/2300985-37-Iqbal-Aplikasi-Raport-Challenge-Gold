@@ -18,7 +18,6 @@ kelas.get("/", kelasController.index, async(req,res)=> {
 });
 
 kelas.get("/add", kelasController.pageCreateKelas);
-
 kelas.get("/edit/:id", kelasController.kelasDetail);
 
 
