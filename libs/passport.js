@@ -5,13 +5,13 @@ const bcrypt = require('bcrypt');
 // call model
 const { tblUser } = require('../models');
 
-const authenticate = (email, password, done) => {
-    tblUser.findOne({ where: { strEmail: email } }).then(userData => {
+const authenticate = (strEmail, strPassword, done) => {
+    tblUser.findOne({ where: { strEmail: strEmail } }).then(userData => {
         if (!userData) {
             return done(null, false, { message: 'User tidak terdaftar!' });
         }
 
-        bcrypt.compare(password, userData.strPassword).then(isMatch => {
+        bcrypt.compare(strPassword, userData.strPassword).then(isMatch => {
             if (!isMatch) {
                 return done(null, false, { message: 'Email dan password tidak sesuai!' });
             }

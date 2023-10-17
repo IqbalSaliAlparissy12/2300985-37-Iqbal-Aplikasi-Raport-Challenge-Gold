@@ -1,6 +1,6 @@
 const express = require("express");
 const home = require("./home");
-const login = require("./login");
+const auth = require("./auth");
 const userWali = require("./userWali");
 const kelas = require("./kelas");
 const mapel = require("./mapel");
@@ -9,12 +9,13 @@ const siswa = require("./siswa");
 const api = require("./api/api.kelas");
 const user = require("./user");
 
+
 const router = express.Router();
 
 router.use('/api', api);
 
 router.use("/home", home);
-router.use("/login", login);
+router.use("/", auth);
 router.use("/wali", userWali);
 router.use("/kelas", kelas);
 router.use("/mapel", mapel);
