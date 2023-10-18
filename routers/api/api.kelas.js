@@ -2,7 +2,7 @@ const express = require("express");
 const KelasController = require("../../controllers/kelas.controller");
 const UserController = require("../../controllers/user.controller");
 
-const Auth = require("../../controllers/auth.controller");
+// const Auth = require("../../controllers/auth.controller");
 
 
 
@@ -26,6 +26,6 @@ api.post('/raport/users/register', userController.register);
 
 
 // Endpoint login
-api.post('/raport/login', Auth.indexLogin );
+// api.post('/raport/login', Auth.indexLogin );
 
 module.exports = api;

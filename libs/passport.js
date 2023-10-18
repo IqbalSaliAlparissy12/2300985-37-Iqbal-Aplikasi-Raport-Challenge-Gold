@@ -7,9 +7,11 @@ const { tblUser } = require('../models');
 
 const authenticate = (strEmail, strPassword, done) => {
     tblUser.findOne({ where: { strEmail: strEmail } }).then(userData => {
+
         if (!userData) {
             return done(null, false, { message: 'User tidak terdaftar!' });
         }
+        
 
         bcrypt.compare(strPassword, userData.strPassword).then(isMatch => {
             if (!isMatch) {

@@ -91,16 +91,18 @@ $(document).ready(function () {
       const email = $("#email").val();
       const password = $("#password").val();
   
+      console.log(email);
       // Kirim data login ke server menggunakan AJAX atau fetch
       $.ajax({
-        url: "/api/raport/login", // Ganti dengan rute API login Anda
+        url: "/login", // Ganti dengan rute API login Anda
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ strEmail: email, strPassword: password }),
         success: function (response) {
+         console.log(response);
           // Tampilkan pesan sukses atau redirect ke halaman utama
           alert("Login berhasil!");
-          // window.location.href = "/"; // Redirect ke halaman utama jika diperlukan
+          window.location.href = "/home"; // Redirect ke halaman utama jika diperlukan
         },
         error: function (error) {
           console.error("Terjadi kesalahan: " + JSON.stringify(error));
