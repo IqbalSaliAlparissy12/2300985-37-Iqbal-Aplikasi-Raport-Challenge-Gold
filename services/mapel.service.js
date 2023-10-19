@@ -1,8 +1,8 @@
-const { tblService } = require("../models");
+const { tblMapel } = require("../models");
 
 class MapelService {
   constructor() {
-    this.newMapel = tblService;
+    this.newMapel = tblMapel;
   }
 
   async getMapel(id) {

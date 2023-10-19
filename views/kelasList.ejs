@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
     <link rel="stylesheet" href="/css/home.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   </head>
   <body>
     <%- include('navbar'); %>
@@ -21,11 +20,12 @@
         <a
           href="/kelas/add"
           class="btn btn-success mb-2"
-          style="margin-top: 20px; margin-bottom: 20px";
+          style="margin-top: 20px; margin-bottom: 20px"
+          ;
           >Add</a
         >
 
-        <div  class="table-responsive"  style="margin-top: 20px;">
+        <div class="table-responsive" style="margin-top: 20px">
           <table class="table">
             <caption>
               List of users
@@ -38,20 +38,31 @@
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            
+
             <tbody>
               <% kelas.forEach((data,index) => { %>
-                <tr>
-                  <th scope="row"><%= index + 1 %></th>
-                  <td><%= data.kelas %></td>
-                  <td><%= data.strKelasDetail %></td>
-                  <td>
-                    <a href="/kelas/edit/<%= data.id %>" class="btn btn-info btn-sm">Edit</a>
-                    <button id="<%= data.id %>" class="btn btn-danger btn-sm delete-kelas">Hapus</button>                  </td>
-                </tr>
+              <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= data.kelas %></td>
+                <td><%= data.strKelasDetail %></td>
+                <td>
+                  <button
+                    id="<%= data.id %>"
+                    class="btn btn-info btn-sm edit-kelas"
+                  >
+                    Edit
+                  </button>
+
+                  <button
+                    id="<%= data.id %>"
+                    class="btn btn-danger btn-sm delete-kelas"
+                  >
+                    Hapus
+                  </button>
+                </td>
+              </tr>
               <% }); %>
             </tbody>
-            
           </table>
         </div>
       </div>
@@ -61,8 +72,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
     <script src="/js/index.js"></script>
-
   </body>
 </html>

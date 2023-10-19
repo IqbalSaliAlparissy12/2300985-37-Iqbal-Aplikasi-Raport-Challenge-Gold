@@ -11,18 +11,16 @@ const passport = require('./libs/passport');
 
 // const ejsLayouts = require('express-ejs-layouts');
 
-app.use(morgan('dev'));
-
-app.set("view engine", "ejs");
-app.set("views", "./views");
 // app.use(ejsLayouts);
 
 // Config folder layouts
-app.set('layout', 'layouts/layouts');
+// app.set('layout', 'layouts/layouts');
 
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static("public"))
+
+
 
 //build in middleware
 app.use(express.json());
@@ -41,6 +39,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 // end proses inisiasi middleware.
+
+
+app.use(morgan('dev'));
+
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
 app.use(router);
 

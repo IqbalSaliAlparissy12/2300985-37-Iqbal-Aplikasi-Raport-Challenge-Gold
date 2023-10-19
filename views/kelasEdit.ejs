@@ -15,7 +15,8 @@
       <div class="container">
         <h1>Edit Kelas</h1>
 
-        <form>
+        <form id="edit-kelas-form">
+          <input type="hidden" name="kelasId" id="kelasId" value="<%= kelas.id %>"> 
           <div class="form-group" style="margin-bottom: 15px">
             <label for="exampleFormControlSelect1">Kelas</label>
             <select class="form-control" id="exampleFormControlSelect1" name="kelas">
@@ -40,18 +41,18 @@
             />
           </div>
 
-          <a
-            href="/kelas"
-            class="btn btn-success mb-2"
-            style="
-              margin-top: 20px;
-              margin-bottom: 20px;
-              background-color: aqua;
-              color: black;
-            "
-          >Edit Kelas</a>
+          <button type="submit" class="btn btn-primary float-right">
+            Edit Kelas
+          </button>
         </form>
       </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
   </body>
 </html>

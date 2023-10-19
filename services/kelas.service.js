@@ -5,19 +5,7 @@ class KelasService {
     this.newKelas = tblKelas;
   }
 
-  async getKelas(id) {
-    let data;
-    if (id) {
-      data = await this.newKelas.findOne({
-        where: {
-          id,
-        },
-      });
-    } else {
-      data = await this.newKelas.findAll();
-    }
-    return data;
-  }
+
 
   async addKelas(payload) {
     const date = new Date();
@@ -31,32 +19,41 @@ class KelasService {
     return inputKelas;
   }
 
-  async updateKelas(id, updatedFields) {
-    try {
-      const date = new Date(); // Tambahkan ini untuk mendapatkan tanggal saat ini
-
-      const existingKelas = await this.newKelas.findOne({
+  async getKelas(id) {
+    let data;
+    if (id) {
+      data = await this.newKelas.findOne({
         where: {
           id,
         },
       });
+    } else {
+      data = await this.newKelas.findAll();
+    }
+    return data;
+  }
+  //
+  async updateKelas(payload) {
+    try {
+      const { kelas, strKelasDetail } = payload;
 
-      if (!existingKelas) {
-        throw new Error("Kelas tidak ditemukan");
-      }
+      // const kelasUpdate = await this.newKelas.findOne({
+      //   where: { id:id },
+      // });
 
-      const { kelas, strKelasDetail } = updatedFields;
+      // if (!kelasUpdate) {
+      //   throw new Error("Buku tidak ditemukan.");
+      // }
 
-      // Memperbarui kelas yang ada dengan updatedFields yang diberikan
-      await existingKelas.update({
+      await this.newKelas.update({
         kelas,
         strKelasDetail,
-        updatedAt: date, // Gunakan tanggal saat ini
       });
 
-      return existingKelas;
+      return kelasUpdate;
     } catch (error) {
-      throw new Error(`Gagal memperbarui kelas: ${error.message}`);
+      console.error("Gagal memperbarui Kelas:", error);
+      throw error;
     }
   }
 

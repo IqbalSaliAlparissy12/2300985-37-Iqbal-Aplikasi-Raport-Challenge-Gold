@@ -4,7 +4,8 @@ const passport = require("passport");
 module.exports = {
 		indexLogin: (req, res) => {
         res.render("login", 
-        { tblUser: req.tblUser })
+        {  tblUser: req.tblUser })
+
 		},
         
 	login: passport.authenticate("local", {

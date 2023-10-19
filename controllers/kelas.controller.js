@@ -13,18 +13,7 @@ class KelasController {
     }
   }
 
-  async kelasDetail(req, res){
-    try {
-      const id = req.params.id;
-      const kelasData = await kelasService.getKelas(id);
-      res.render("kelasEdit", {
-        kelas: kelasData,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+ 
 
   //api
   async indexAdd(req, res) {
@@ -36,48 +25,57 @@ class KelasController {
   }
 
   async pageCreateKelas(req, res) {
-
-    res.render(
-        "kelasAdd",
-     {
-    });
+    res.render("kelasAdd", {});
   }
 
-  async indexEdit(req, res) {
-    res.render("kelasEdit");
-  }
-
-  async updateKelas(req, res) {
+  async kelasDetail(req, res) {
     try {
-      // Mendapatkan ID kelas dari parameter
-      const { id } = req.params;
-  
-      // Memanggil service untuk mendapatkan data kelas berdasarkan ID
-      const kelas = await kelasService.getKelas(id);
-  
-      if (!kelas) {
-        throw new Error('Kelas tidak ditemukan');
-      }
-  
-      // Menampilkan halaman edit dengan data kelas
-      res.status(201).json(kelas);
+      const id = req.params.id;
+      const kelasData = await kelasService.getKelas(id);
+      res.render("kelasEdit", {
+          kelas: kelasData,
+      });
     } catch (error) {
-      res.status(500).send(`Gagal menampilkan halaman edit kelas: ${error.message}`);
+      console.log(error);
     }
   }
+
+
+  //api 
+  async updateKelas(req, res) {
+    try {
+      const kelasId = req.params.id;
+      const updatedKelasData = req.body;
+
+      const updateKelas = await kelasService.updateKelas(kelasId, updatedKelasData);
+
+      if (updateKelas) {
+        res
+          .status(200)
+          .json({ data: updateKelas, message: "Kelas berhasil diubah" });
+      } else {
+        res.status(404).json({ message: "Kelas tidak ditemukan" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Gagal mengedit Kelas." });
+    }
+  }
+
   
 
   async deleteKelas(req, res) {
     try {
-        const kelas = await kelasService.delete(req.params.id)
-        res.status(201).json({
-            data: kelas, message: "Berhasil menghapus kelas"
-        })
+      const kelas = await kelasService.delete(req.params.id);
+      res.status(201).json({
+        data: kelas,
+        message: "Berhasil menghapus kelas",
+      });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: "Gagal menghapus kelas." });
+      console.log(error);
+      res.status(500).json({ error: "Gagal menghapus kelas." });
     }
-}
+  }
 }
 
 module.exports = KelasController;

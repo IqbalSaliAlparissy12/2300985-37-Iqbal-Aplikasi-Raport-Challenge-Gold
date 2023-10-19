@@ -15,7 +15,6 @@ const userController = new UserController;
 api.post('/raport/kelas', kelasController.indexAdd);
 // Endpoint untuk memperbarui data kelas berdasarkan ID
 api.put('/raport/kelas/:id', kelasController.updateKelas);
-
 api.delete("/raport/kelas/:id", kelasController.deleteKelas);
 
 
