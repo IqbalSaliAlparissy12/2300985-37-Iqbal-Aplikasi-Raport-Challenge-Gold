@@ -47,12 +47,12 @@ class KelasController {
       const kelasId = req.params.id;
       const updatedKelasData = req.body;
 
-      const updateKelas = await kelasService.updateKelas(kelasId, updatedKelasData);
+      const editKelas = await kelasService.updateKelas(kelasId, updatedKelasData);
 
-      if (updateKelas) {
+      if (editKelas) {
         res
           .status(200)
-          .json({ data: updateKelas, message: "Kelas berhasil diubah" });
+          .json({ data: editKelas, message: "Kelas berhasil diubah" });
       } else {
         res.status(404).json({ message: "Kelas tidak ditemukan" });
       }

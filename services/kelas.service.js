@@ -32,20 +32,21 @@ class KelasService {
     }
     return data;
   }
+
   //
-  async updateKelas(payload) {
+  async updateKelas(id, payload) {
     try {
       const { kelas, strKelasDetail } = payload;
 
-      // const kelasUpdate = await this.newKelas.findOne({
-      //   where: { id:id },
-      // });
+      const kelasUpdate = await this.newKelas.findOne({
+        where: { id:id },
+      });
 
-      // if (!kelasUpdate) {
-      //   throw new Error("Buku tidak ditemukan.");
-      // }
+      if (!kelasUpdate) {
+        throw new Error("Kelas tidak ditemukan.");
+      }
 
-      await this.newKelas.update({
+      await kelasUpdate.update({
         kelas,
         strKelasDetail,
       });
