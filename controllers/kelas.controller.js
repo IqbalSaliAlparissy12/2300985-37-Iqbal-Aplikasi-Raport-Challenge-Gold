@@ -28,6 +28,7 @@ class KelasController {
     res.render("kelasAdd", {});
   }
 
+  //id kelas
   async kelasDetail(req, res) {
     try {
       const id = req.params.id;
@@ -46,9 +47,10 @@ class KelasController {
     try {
       const kelasId = req.params.id;
       const updatedKelasData = req.body;
+      
 
       const editKelas = await kelasService.updateKelas(kelasId, updatedKelasData);
-
+      console.log(editKelas);
       if (editKelas) {
         res
           .status(200)

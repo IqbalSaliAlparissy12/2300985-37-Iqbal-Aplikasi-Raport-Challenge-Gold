@@ -2,49 +2,95 @@ const MapelService = require("../services/mapel.service");
 
 const mapelService = new MapelService();
 class MapelKontroller {
-    async index(req, res) {
-        try {
-            const mapelData = await mapelService.getMapel(null);
+  //web
 
-            res.render("mapelList",{
-                mapel: mapelData
-            });
-        } catch (error) {
-            
-        }
-       
+  async index(req, res) {
+    try {
+      const mapelData = await mapelService.getMapel();
+
+      res.render("mapelList", {
+        mapel: mapelData,
+      });
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    //api
-    async mapelAdd(req, res) {
-        const payload = req.body;
-        const addMapel = await mapelService.addMapel(payload);
+  //api get all
+  async listMapel(req, res) {
+    try {
+      const mapel = await mapelService.getMapel();
+      res.status(200).json({ message: "SUCCES", data: mapel });
+    } catch (error) {
+      res.status(500).json({ message: "FAILED" });
+      console.error(error);
+    }
+  }
+
+  //api
+  async mapelAdd(req, res) {
+    const payload = req.body;
+    const addMapel = await mapelService.addMapel(payload);
+
+    res.status(201).json(addMapel);
+  }
+
+  async indexAdd(req, res) {
+    res.render("mapelAdd");
+  }
+
+  // async indexEdit(req, res) {
+  //   res.render("mapelEdit");
+  // }
+
+  //id Mapel
+  async mapelEdit(req, res) {
+    try {
+      const id = req.params.id;
+      const mapeData = await mapelService.getMapelId(id);
+      res.render("mapelEdit", {
+        mapel: mapeData,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  //api 
+  async updateMapel(req, res) {
+    try {
+      const mapelId = req.params.id;
+      const updatedMapelData = req.body;
       
-    
-        res.status(201).json(addMapel);
+
+      const editMapel = await mapelService.updateMapel(mapelId, updatedMapelData);
+      console.log(editMapel);
+      if (editMapel) {
+        res
+          .status(200)
+          .json({ data: editMapel, message: "Mata pelajaran berhasil diubah" });
+      } else {
+        res.status(404).json({ message: "Mata pelajaran tidak ditemukan" });
       }
-
-    async indexAdd(req, res) {
-        
-        res.render("mapelAdd");
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Gagal mengedit mata pelajaran." });
     }
+  }
 
-    async indexEdit(req, res) {
-        res.render("mapelEdit");
+
+  async deleteMapel(req, res) {
+    try {
+      const mapel = await mapelService.delete(req.params.id);
+      res.status(201).json({
+        data: mapel,
+        message: "Berhasil Menghapus Mata Pelajaran",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Gagal Menghapus Mata Pelajaran." });
     }
-
-    async deleteMapel(req, res) {
-        try {
-          const mapel = await mapelService.delete(req.params.id);
-          res.status(201).json({
-            data: mapel,
-            message: "Berhasil Menghapus Mata Pelajaran",
-          });
-        } catch (error) {
-          console.log(error);
-          res.status(500).json({ error: "Gagal Menghapus Mata Pelajaran." });
-        }
-      }
+  }
 }
 
 module.exports = MapelKontroller;

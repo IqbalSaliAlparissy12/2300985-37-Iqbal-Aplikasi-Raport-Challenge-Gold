@@ -19,7 +19,7 @@
           <input type="hidden" name="kelasId" id="kelasId" value="<%= kelas.id %>"> 
           <div class="form-group" style="margin-bottom: 15px">
             <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1" name="kelas">
+            <select class="form-control" id="kelas" name="form-control">
               <option value="">-- Pilih --</option>
               <option value="1" <% if (kelas.kelas === "1") { %>selected<% } %>>1</option>
               <option value="2" <% if (kelas.kelas === "2") { %>selected<% } %>>2</option>
@@ -35,7 +35,7 @@
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
+              id="strKelasDetail"
               placeholder="masukan Deskripsi kelas"
               value="<%= kelas.strKelasDetail %>"
             />

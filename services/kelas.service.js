@@ -33,7 +33,7 @@ class KelasService {
     return data;
   }
 
-  //
+  //edit kelas
   async updateKelas(id, payload) {
     try {
       const { kelas, strKelasDetail } = payload;
