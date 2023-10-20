@@ -48,7 +48,6 @@ class KelasController {
       const kelasId = req.params.id;
       const updatedKelasData = req.body;
       
-
       const editKelas = await kelasService.updateKelas(kelasId, updatedKelasData);
       console.log(editKelas);
       if (editKelas) {

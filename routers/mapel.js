@@ -7,7 +7,7 @@ const mapel = express.Router();
 const mapelKontroller = new MapelKontroller();
 mapel.get("/", mapelKontroller.index);
 mapel.get("/add", mapelKontroller.indexAdd);
-mapel.get("/edit", mapelKontroller.indexEdit);
+mapel.get("/edit", mapelKontroller.mapelEdit);
 
 
 module.exports = mapel;

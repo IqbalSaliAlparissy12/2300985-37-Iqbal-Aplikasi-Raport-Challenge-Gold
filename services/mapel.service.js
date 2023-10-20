@@ -1,8 +1,8 @@
-const { tblMapel } = require("../models");
+const { tblMataPelajaran } = require("../models");
 
 class MapelService {
   constructor() {
-    this.newMapel = tblMapel;
+    this.newMapel = tblMataPelajaran;
   }
 
   async getMapel() {
@@ -11,8 +11,6 @@ class MapelService {
     } catch (error) {
       console.log(error);
     }
-
-    return data;
   }
 
   async getMapelId(id) {
@@ -25,29 +23,27 @@ class MapelService {
     } catch (error) {
       console.log(error);
     }
-
-    return data;
   }
 
     //edit kelas
     async updateMapel(id, payload) {
       try {
-        const { strMataPelajaran, intKelasId } = payload;
+        const { strMataPelajaran, strKelas } = payload;
   
-        const kelasUpdate = await this.newKelas.findOne({
+        const mapelUpdate = await this.newMapel.findOne({
           where: { id:id },
         });
   
-        if (!kelasUpdate) {
+        if (!mapelUpdate) {
           throw new Error("Kelas tidak ditemukan.");
         }
   
-        await kelasUpdate.update({
+        await mapelUpdate.update({
           strMataPelajaran,
-          intKelasId,
+          strKelas,
         });
   
-        return kelasUpdate;
+        return mapelUpdate;
       } catch (error) {
         console.error("Gagal memperbarui Kelas:", error);
         throw error;
@@ -56,11 +52,10 @@ class MapelService {
 
   async addMapel(payload) {
     const date = new Date();
-    const { strMataPelajaran, intKelasId } = payload;
+    const { strMataPelajaran, strKelas } = payload;
     const inputMapel = this.newMapel.create({
-      strMataPelajaran,
-      intKelasId,
-      kelas,
+      strMataPelajaran : strMataPelajaran,
+      strKelas: strKelas,
       createdAt: date,
       updatedAt: date,
     });

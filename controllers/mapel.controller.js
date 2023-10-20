@@ -3,7 +3,6 @@ const MapelService = require("../services/mapel.service");
 const mapelService = new MapelService();
 class MapelKontroller {
   //web
-
   async index(req, res) {
     try {
       const mapelData = await mapelService.getMapel();
@@ -24,6 +23,21 @@ class MapelKontroller {
     } catch (error) {
       res.status(500).json({ message: "FAILED" });
       console.error(error);
+    }
+  }
+
+
+  //api get id
+   async mapelDetail(req, res) {
+    try {
+      const id = req.params.id;
+      const mapelData = await mapelService.getMapelId(id);
+      // res.render("kelasEdit", {
+      //     kelas: kelasData,
+      // });
+      res.status(200).json({ message: "SUCCES", data: mapelData});
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -62,7 +76,6 @@ class MapelKontroller {
       const mapelId = req.params.id;
       const updatedMapelData = req.body;
       
-
       const editMapel = await mapelService.updateMapel(mapelId, updatedMapelData);
       console.log(editMapel);
       if (editMapel) {

@@ -6,7 +6,6 @@ const kelas = require("./kelas");
 const mapel = require("./mapel");
 const guru = require("./guru");
 const siswa = require("./siswa");
-// const api = require("./api/api.kelas");
 const user = require("./user");
 const apiKelas = require("./api/api.kelas");
 const apiMapel = require("./api/api.mapel");
