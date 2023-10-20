@@ -38,33 +38,28 @@
             </thead>
             
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Matematika</td>
-                <td>Kelas 1</td>
-                <td>
-                  <a href="/mapel/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Bahasa Indonesia</td>
-                <td>Kelas 2</td>
-                <td>
-                  <a href="/mapel/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Bahasa Inggris</td>
-                <td>Kelas 4</td>
-                <td>
-                  <a href="/mapel/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
+              <% mapel.forEach((data,index) => { %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td><%= data.strMataPelajaran %></td>
+                  <td><%= data.strKelas %></td>
+                  <td>
+                    <button
+                      id="<%= data.id %>"
+                      class="btn btn-info btn-sm edit-kelas"
+                    >
+                      Edit
+                    </button>
+  
+                    <button
+                      id="<%= data.id %>"
+                      class="btn btn-danger btn-sm delete-kelas"
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              <% }); %>
             </tbody>
           </table>
         </div>

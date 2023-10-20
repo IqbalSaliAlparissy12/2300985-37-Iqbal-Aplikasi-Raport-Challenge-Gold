@@ -15,19 +15,19 @@
       <div class="container">
         <h1>Add Mata Pelajaran per Kelas</h1>
 
-        <form>
+        <form id="create-mapel-form">
           <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
             <label for="exampleFormControlInput1">Mata Pelajaran</label>
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
+              id="strMataPelajaran"
               placeholder="masukan nama"
             />
           </div>
           <div class="form-group" style="margin-bottom: 15px">
             <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1">
+            <select class="form-control" id="strKelas" required>
               <option>-- Pilih --</option>
               <option>1</option>
               <option>2</option>
@@ -38,15 +38,9 @@
             </select>
           </div>
 
-
-
-          <a
-            href="/mapel"
-            class="btn btn-success mb-2"
-            style="margin-top: 20px; margin-bottom: 20px; background-color: aqua; color: black;"
-            ;
-            >Add</a
-          >
+          <button type="submit" class="btn btn-primary float-right">
+            Tambah Mapel
+          </button>
         </form>
       </div>
     </div>

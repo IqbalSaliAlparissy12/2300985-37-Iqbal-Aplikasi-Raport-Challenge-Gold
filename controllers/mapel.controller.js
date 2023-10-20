@@ -53,6 +53,8 @@ class MapelKontroller {
     res.render("mapelAdd");
   }
 
+  
+
   // async indexEdit(req, res) {
   //   res.render("mapelEdit");
   // }

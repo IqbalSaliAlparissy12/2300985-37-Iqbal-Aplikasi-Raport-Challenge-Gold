@@ -28,6 +28,37 @@ $(document).ready(function () {
   });
 });
 
+//Create Mapel
+$(document).ready(function () {
+  $("#create-mapel-form").submit(function (event) {
+    event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+    // Mengambil data dari formulir
+    let kelas = $("#strKelas").val();
+    let strMataPelajaran = $("#strMataPelajaran").val();
+
+    // Mengirim data ke API menggunakan AJAX
+    $.ajax({
+      url: "/api-mapel/raport/mapel", // Ganti dengan URL API sesuai dengan struktur Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ strKelas: strKelas, strMataPelajaran: strMataPelajaran }),
+      success: function (response) {
+        // Tindakan setelah berhasil
+        alert("Mata Pelajaran berhasil ditambah.");
+        // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+        window.location.href = "/mapel";
+      },
+      error: function (error) {
+        // Tindakan jika terjadi kesalahan
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal menyimpan mata pelajaran.");
+      },
+    });
+  });
+});
+
+
 $(".delete-kelas").click(function () {
   // Menyimpan referensi ke tombol "Hapus" yang diklik
   var $deleteButton = $(this);
@@ -129,29 +160,3 @@ $("#registration-form").submit(function (event) {
   }
 });
 
-// $(document).ready(function () {
-//   $("#login-form").submit(function (event) {
-//     event.preventDefault();
-
-//     const strEmail = $("#email").val();
-//     const strPassword = $("#password").val();
-
-//     // Kirim data login ke server menggunakan AJAX atau fetch
-//     $.ajax({
-//       url: "/login", // Ganti dengan rute API login Anda
-//       type: "POST",
-//       contentType: "application/json",
-//       data: JSON.stringify({ strEmail: strEmail, strPassword: strPassword }),
-//       success: function (response) {
-//         console.log(response);
-//         // Tampilkan pesan sukses atau redirect ke halaman utama
-//         // alert("Login berhasil!");
-//         // window.location.href = "/home"; // Redirect ke halaman utama jika diperlukan
-//       },
-//       error: function (error) {
-//         console.error("Terjadi kesalahan: " + JSON.stringify(error));
-//         // alert("Gagal login. Periksa kembali email dan password Anda.");
-//       },
-//     });
-//   });
-// });
