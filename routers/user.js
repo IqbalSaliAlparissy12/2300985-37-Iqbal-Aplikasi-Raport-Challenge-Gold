@@ -26,4 +26,5 @@ user.get("/admin", userController.index, async(req, res) => {
 });
 
 
+
 module.exports = user

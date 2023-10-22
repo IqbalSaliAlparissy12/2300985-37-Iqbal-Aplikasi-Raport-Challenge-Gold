@@ -5,7 +5,7 @@ const userService = new UserService();
 class UserController {
   async indexRegister(req, res) {
     res.render("userAdminAdd", {
-      tblUser: req.tblUser,
+      user: req.tblUser,
     });
   }
 

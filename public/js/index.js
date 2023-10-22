@@ -129,6 +129,45 @@ $("#registration-form").submit(function (event) {
   }
 });
 
+$("#registration-wali-form").submit(function (event) {
+  event.preventDefault();
+
+  const name = $("#name").val();
+  const email = $("#email").val();
+  const role = $("#strRole").val();
+  const kelas = $("#strKelas").val();
+  const password = $("#password").val();
+  const repassword = $("#repassword").val();
+
+  if (password !== repassword) {
+    alert("Maaf konfirmasi password yang and masukan tidak sesuai");
+  } else {
+    // Kirim data registrasi ke server menggunakan AJAX atau fetch
+    $.ajax({
+      url: "/api/raport/users/wali", // Ganti dengan rute API registrasi Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({
+        strName: name,
+        strEmail: email,
+        strPassword: password,
+        strRole: role,
+        strKelas: kelas
+      }),
+      success: function (response) {
+        // Tampilkan pesan sukses atau redirect ke halaman login
+        alert("Wali Kelas berhasil! Silakan masuk.");
+        window.location.href = "/users/wali";
+      },
+      error: function (error) {
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal mendaftar. Silakan coba lagi.");
+      },
+    });
+  }
+});
+
+
 
 //Create Mapel
 $(document).ready(function () {
@@ -218,6 +257,32 @@ $("#edit-mapel-form").submit(function (event) {
       // Tindakan jika terjadi kesalahan
       console.error("Terjadi kesalahan: " + JSON.stringify(error));
       alert("Gagal menyimpan mata pelajaran.");
+    },
+  });
+});
+
+
+$(".delete-wali").click(function () {
+  // Menyimpan referensi ke tombol "Hapus" yang diklik
+  var $deleteButton = $(this);
+
+  // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+  const waliId = $deleteButton.attr("id");
+
+  // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+  $.ajax({
+    url: "/api/raport/users/wali/" + waliIdId,
+    type: "DELETE",
+    success: function (response) {
+      // Tindakan setelah berhasil menghapus komentar
+      alert("Wali kelas berhasil di hapus.");
+
+      // Hapus elemen komentar dari DOM
+      location.reload();
+    },
+    error: function (error) {
+      console.error("Terjadi kesalahan saat menghapus wali kelas:", error);
+      alert("Gagal menghapus wali kelas.");
     },
   });
 });

@@ -1,12 +1,13 @@
 const express = require("express");
 const MapelKontroller = require("../controllers/mapel.controller");
 const tblmatapelajaran = require("../models/tblmatapelajaran");
+const permisionMiddleware = require("../middleware/permision.middleware");
 
 const mapel = express.Router();
 
 
 const mapelKontroller = new MapelKontroller();
-mapel.get("/", mapelKontroller.index, async(req, res) => {
+mapel.get("/", permisionMiddleware,mapelKontroller.index, async(req, res) => {
     try {
         const mapel = await tblmatapelajaran.findAll();
         res.status(200).json({
@@ -23,8 +24,8 @@ mapel.get("/", mapelKontroller.index, async(req, res) => {
         })
     }
 });
-mapel.get("/add", mapelKontroller.indexAdd);
-mapel.get("/edit/:id", mapelKontroller.mapelDetail);
+mapel.get("/add", permisionMiddleware, mapelKontroller.indexAdd);
+mapel.get("/edit/:id", permisionMiddleware, mapelKontroller.mapelDetail);
 
 
 module.exports = mapel;

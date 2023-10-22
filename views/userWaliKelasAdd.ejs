@@ -13,63 +13,89 @@
 
     <div class="main-content" id="main-content">
       <div class="container">
-        <h1>Add Wali Kelas</h1>
+        <h1>Tambah Wali Kelas</h1>
 
-        <form>
+        <form id="registration-wali-form">
           <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
-            <label for="exampleFormControlInput1">Nama Lengkap Guru</label>
+            <label for="name">Nama Wali Kelas</label>
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="masukan nama"
+              id="name"
+              name="name"
+              required
             />
           </div>
           <div class="form-group" style="margin-bottom: 15px">
-            <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>-- Pilih --</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-            </select>
-          </div>
-
-          <div class="form-group" style="margin-bottom: 15px">
-            <label for="exampleFormControlSelect1">Password</label>
-            <div className="control">
-              <input type="password" className="input" placeholder="*****" />
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
             </div>
           </div>
 
-          <div class="form-group" style="margin-bottom: 15px">
-            <label for="exampleFormControlSelect1">Konfirmasi Password</label>
-            <div className="control">
-              <input type="password" className="input" placeholder="*****" />
+          <form id="role-user">
+            <div class="form-group" style="margin-bottom: 15px">
+              <label for="exampleFormControlSelect1">strRole</label>
+              <select class="form-control" id="strRole" required>
+                <option>-- Pilih --</option>
+                <option>wali kelas</option>  
+              </select>
             </div>
-          </div>
 
-          <div class="form-group" style="margin-bottom: 15px">
-            <label for="exampleFormControlTextarea1">Deskripsi Guru</label>
-            <textarea
+            <div class="form-group" style="margin-bottom: 15px">
+                <label for="exampleFormControlSelect1">Kelas</label>
+                <select class="form-control" id="strKelas" required>
+                  <option>-- Pilih --</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+              </div>
+  
+  
+
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
               class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="3"
-            ></textarea>
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="repassword">Konfirmasi Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="repassword"
+              name="repassword"
+              required
+            />
           </div>
 
-          <a
-            href="/wali"
-            class="btn btn-success mb-2"
-            style="margin-top: 20px; margin-bottom: 20px; background-color: aqua; color: black;"
-            ;
-            >Add</a
-          >
+          <br/>
+          <button type="submit" class="btn btn-primary float-right">Submit</button>
         </form>
       </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
   </body>
 </html>

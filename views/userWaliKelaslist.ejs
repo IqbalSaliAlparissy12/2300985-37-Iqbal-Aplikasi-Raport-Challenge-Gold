@@ -1,74 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
-    <link rel="stylesheet" href="/css/home.css" />
-  </head>
-  <body>
-    <%- include('navbar'); %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+  <link rel="stylesheet" href="/css/home.css" />
+</head>
+
+<body>
+  <%- include('navbar'); %>
 
     <div class="main-content" id="main-content">
       <div class="container">
         <!-- Konten utama berada di sini -->
-        <h1>List Wali Kelas</h1>
+        <h1>User Wali Kelas</h1>
 
-        <a
-          href="/wali/add"
-          class="btn btn-success mb-2"
-          style="margin-top: 20px; margin-bottom: 20px";
-          >Add</a
-        >
+        <a href="/users/wali/add" class="btn btn-success mb-2" style="margin-top: 20px; margin-bottom: 20px" ;>Add</a>
 
-        <div  class="table-responsive"  style="margin-top: 20px;">
+        <div class="table-responsive" style="margin-top: 20px;">
           <table class="table">
             <caption>
-              List of users
+              Users List
             </caption>
             <thead>
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
                 <th scope="col">Kelas</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            
+
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Kelas 1</td>
-                <td>
-                  <a href="/wali/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Kelas 2</td>
-                <td>
-                  <a href="/wali/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>
-                  <a href="/wali/edit" class="btn btn-info btn-sm">Edit</a>
-                  <button class="btn btn-danger btn-sm">Delete</button>
-                </td>
-              </tr>
+              <% userWali.forEach((data,index)=> { %>
+                <tr>
+                  <th scope="row">
+                    <%= index + 1 %>
+                  </th>
+                  <td>
+                    <%= data.strName %>
+                  </td>
+                  <td>
+                    <%= data.strEmail %>
+                  </td>
+                  <td>
+                    <%= data.strRole %>
+                  </td>
+                  <td>
+                    <%= data.strKelas %>
+                  </td>
+                  <td>
+                    <button id="<%= data.id %>" class="btn btn-info btn-sm edit-mapel">
+                      Edit
+                    </button>
+
+                    <button id="<%= data.id %>" class="btn btn-danger btn-sm delete-wali">
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+                <% }); %>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="/js/index.js"></script>
+
+</body>
+
 </html>
