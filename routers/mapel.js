@@ -12,7 +12,7 @@ mapel.get("/", mapelKontroller.index, async(req, res) => {
         res.status(200).json({
             status : "success",
             data : mapel,
-            message: "Data buku berhasil ditambahkan!"
+            message: "Mata pelajaran berhasil ditambahkan!"
         })
     } catch (error) {
         res.status(400).json({
@@ -24,7 +24,7 @@ mapel.get("/", mapelKontroller.index, async(req, res) => {
     }
 });
 mapel.get("/add", mapelKontroller.indexAdd);
-mapel.get("/edit", mapelKontroller.mapelEdit);
+mapel.get("/edit/:id", mapelKontroller.mapelDetail);
 
 
 module.exports = mapel;

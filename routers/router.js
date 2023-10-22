@@ -15,7 +15,6 @@ const router = express.Router();
 
 router.use('/api', apiKelas);
 router.use('/api-mapel', apiMapel);
-
 router.use("/home", home);
 router.use("/", auth);
 router.use("/wali", userWali);

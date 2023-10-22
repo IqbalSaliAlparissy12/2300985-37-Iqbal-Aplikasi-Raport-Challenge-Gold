@@ -17,7 +17,7 @@ class MapelService {
     try {
       return await this.newMapel.findOne({
         where:{
-          id:id
+          id,
         }
       });
     } catch (error) {
@@ -35,7 +35,7 @@ class MapelService {
         });
   
         if (!mapelUpdate) {
-          throw new Error("Kelas tidak ditemukan.");
+          throw new Error("Mata pelajaran tidak ditemukan.");
         }
   
         await mapelUpdate.update({
@@ -45,7 +45,7 @@ class MapelService {
   
         return mapelUpdate;
       } catch (error) {
-        console.error("Gagal memperbarui Kelas:", error);
+        console.error("Gagal memperbarui mata pelajaran:", error);
         throw error;
       }
     }

@@ -28,36 +28,6 @@ $(document).ready(function () {
   });
 });
 
-//Create Mapel
-$(document).ready(function () {
-  $("#create-mapel-form").submit(function (event) {
-    event.preventDefault(); // Menghentikan pengiriman formulir secara default
-
-    // Mengambil data dari formulir
-    let kelas = $("#strKelas").val();
-    let strMataPelajaran = $("#strMataPelajaran").val();
-
-    // Mengirim data ke API menggunakan AJAX
-    $.ajax({
-      url: "/api-mapel/raport/mapel", // Ganti dengan URL API sesuai dengan struktur Anda
-      type: "POST",
-      contentType: "application/json",
-      data: JSON.stringify({ strKelas: strKelas, strMataPelajaran: strMataPelajaran }),
-      success: function (response) {
-        // Tindakan setelah berhasil
-        alert("Mata Pelajaran berhasil ditambah.");
-        // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
-        window.location.href = "/mapel";
-      },
-      error: function (error) {
-        // Tindakan jika terjadi kesalahan
-        console.error("Terjadi kesalahan: " + JSON.stringify(error));
-        alert("Gagal menyimpan mata pelajaran.");
-      },
-    });
-  });
-});
-
 
 $(".delete-kelas").click(function () {
   // Menyimpan referensi ke tombol "Hapus" yang diklik
@@ -85,11 +55,10 @@ $(".delete-kelas").click(function () {
 });
 
 
-let selectedKelasId; // Variabel untuk menyimpan kelasId
 
 // Menangani klik tombol "Edit"
 $(".edit-kelas").click(function () {
-  selectedKelasId = $(this).attr("id");
+  const selectedKelasId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/kelas/edit/${selectedKelasId}`;
   
@@ -138,7 +107,7 @@ $("#registration-form").submit(function (event) {
   } else {
     // Kirim data registrasi ke server menggunakan AJAX atau fetch
     $.ajax({
-      url: "/api/raport/users/register", // Ganti dengan rute API registrasi Anda
+      url: "/api/raport/users/admin", // Ganti dengan rute API registrasi Anda
       type: "POST",
       contentType: "application/json",
       data: JSON.stringify({
@@ -160,3 +129,95 @@ $("#registration-form").submit(function (event) {
   }
 });
 
+
+//Create Mapel
+$(document).ready(function () {
+  $("#create-mapel-form").submit(function (event) {
+    event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+    // Mengambil data dari formulir
+    let kelas = $("#strKelas").val();
+    let strMataPelajaran = $("#strMataPelajaran").val();
+
+    // Mengirim data ke API menggunakan AJAX
+    $.ajax({
+      url: "/api-mapel/raport/mapel", // Ganti dengan URL API sesuai dengan struktur Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ strKelas: kelas, strMataPelajaran: strMataPelajaran }),
+      success: function (response) {
+        // Tindakan setelah berhasil
+        alert("Mata Pelajaran berhasil ditambah.");
+        // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+        window.location.href = "/mapel";
+      },
+      error: function (error) {
+        // Tindakan jika terjadi kesalahan
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal menyimpan mata pelajaran.");
+      },
+    });
+  });
+});
+
+$(".delete-mapel").click(function () {
+  // Menyimpan referensi ke tombol "Hapus" yang diklik
+  var $deleteButton = $(this);
+
+  // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+  const mapelId = $deleteButton.attr("id");
+
+  // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+  $.ajax({
+    url: "/api-mapel/raport/mapel/" + mapelId,
+    type: "DELETE",
+    success: function (response) {
+      // Tindakan setelah berhasil menghapus komentar
+      alert("Mata pelajaran berhasil di hapus.");
+
+      // Hapus elemen komentar dari DOM
+      location.reload();
+    },
+    error: function (error) {
+      console.error("Terjadi kesalahan saat menghapus mata pelajaran:", error);
+      alert("Gagal menghapus mata pelajaran.");
+    },
+  });
+});
+
+// Menangani klik tombol "Edit"
+$(".edit-mapel").click(function () {
+ const  selectedMapelId = $(this).attr("id");
+  // Redirect ke halaman edit dengan membawa ID kelas
+  window.location.href = `/mapel/edit/${selectedMapelId}`;
+  
+});
+
+// EDIT Mata Pelajaran
+$("#edit-mapel-form").submit(function (event) {
+  event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+  let mataPelajaran = $("#strMataPelajaran").val();
+  let kelas = $("#strKelas").val();
+
+  let id = $("#mapelId").val()
+
+  // Mengirim data ke API menggunakan AJAX
+  $.ajax({
+    url: `/api-mapel/raport/mapel/${id}`, // Gunakan selectedKelasId
+    type: "PUT", // Menggunakan metode PUT untuk pengeditan
+    contentType: "application/json",
+    data: JSON.stringify({ strMataPelajaran: mataPelajaran, strKelas: kelas }),
+    success: function (response) {
+      // Tindakan setelah berhasil
+      alert("Mata pelajaran berhasil diedit.");
+      // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+      window.location.href = "/mapel";
+    },
+    error: function (error) {
+      // Tindakan jika terjadi kesalahan
+      console.error("Terjadi kesalahan: " + JSON.stringify(error));
+      alert("Gagal menyimpan mata pelajaran.");
+    },
+  });
+});

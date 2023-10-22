@@ -14,41 +14,48 @@
     <div class="main-content" id="main-content">
       <div class="container">
         <h1>Edit Mata Pelajaran per Kelas</h1>
-
-        <form>
+        <form id="edit-mapel-form">
+          <input type="hidden" name="mapelId" id="mapelId" value="<%= mapel.id %>"> 
           <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
             <label for="exampleFormControlInput1">Mata Pelajaran</label>
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
-              placeholder="masukan nama"
+              id="strMataPelajaran"
+              placeholder="masukan mata pelajaran"
+              value="<%= mapel.strMataPelajaran %>"
             />
           </div>
-          <div class="form-group" style="margin-bottom: 15px">
-            <label for="exampleFormControlSelect1">Kelas</label>
-            <select class="form-control" id="exampleFormControlSelect1">
-              <option>-- Pilih --</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-            </select>
-          </div>
+          
+            <input type="hidden" name="mapelId" id="mapelId" value="<%= mapel.id %>"> 
+            <div class="form-group" style="margin-bottom: 15px">
+              <label for="exampleFormControlSelect1">Kelas</label>
+              <select class="form-control" id="strKelas" name="form-control">
+                <option value="">-- Pilih --</option>
+                <option value="1" <% if (mapel.strKelas === "1") { %>selected<% } %>>1</option>
+                <option value="2" <% if (mapel.strKelas === "2") { %>selected<% } %>>2</option>
+                <option value="3" <% if (mapel.strKelas === "3") { %>selected<% } %>>3</option>
+                <option value="4" <% if (mapel.strKelas === "4") { %>selected<% } %>>4</option>
+                <option value="5" <% if (mapel.strKelas === "5") { %>selected<% } %>>5</option>
+                <option value="6" <% if (mapel.strKelas === "6") { %>selected<% } %>>6</option>
+              </select>
+            </div>
 
+            <button type="submit" class="btn btn-primary float-right">
+              Edit Mapel
+            </button>
 
-
-          <a
-            href="/mapel"
-            class="btn btn-success mb-2"
-            style="margin-top: 20px; margin-bottom: 20px; background-color: aqua; color: black;"
-            ;
-            >Update</a
-          >
         </form>
       </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
+    
   </body>
 </html>

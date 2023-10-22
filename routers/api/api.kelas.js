@@ -20,8 +20,8 @@ api.delete("/raport/kelas/:id", kelasController.deleteKelas);
 
 
 // Endpoint user
-api.post('/raport/users/register', userController.register);
-
+api.post('/raport/users/admin', userController.register);
+api.get('/raport/users/admin', userController.listUserAdmin)
 
 
 // Endpoint login

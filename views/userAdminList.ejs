@@ -14,10 +14,10 @@
     <div class="main-content" id="main-content">
       <div class="container">
         <!-- Konten utama berada di sini -->
-        <h1>Mata Pelajaran</h1>
+        <h1>User Admin</h1>
 
         <a
-          href="/mapel/add"
+          href="/users/admin/add"
           class="btn btn-success mb-2"
           style="margin-top: 20px; margin-bottom: 20px";
           >Add</a
@@ -26,37 +26,39 @@
         <div  class="table-responsive"  style="margin-top: 20px;">
           <table class="table">
             <caption>
-              Mata Pelajaran List
+              Users List
             </caption>
             <thead>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Mata Pelajaran</th>
-                <th scope="col">Kelas</th>
-                <th scope="col">Action</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <!-- <th scope="col">Action</th> -->
               </tr>
             </thead>
             
             <tbody>
-              <% mapel.forEach((data,index) => { %>
+              <% user.forEach((data,index) => { %>
                 <tr>
                   <th scope="row"><%= index + 1 %></th>
-                  <td><%= data.strMataPelajaran %></td>
-                  <td><%= data.strKelas %></td>
-                  <td>
+                  <td><%= data.strName %></td>
+                  <td><%= data.strEmail %></td>
+                  <td><%= data.strRole %></td>
+                  <!-- <td>
                     <button
                       id="<%= data.id %>"
                       class="btn btn-info btn-sm edit-mapel"
                     >
                       Edit
                     </button>
-  
-                    <button
+   -->
+                    <!-- <button
                       id="<%= data.id %>"
                       class="btn btn-danger btn-sm delete-mapel"
                     >
                       Hapus
-                    </button>
+                    </button> -->
                   </td>
                 </tr>
               <% }); %>

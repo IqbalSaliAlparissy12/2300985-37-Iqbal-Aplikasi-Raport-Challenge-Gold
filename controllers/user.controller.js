@@ -9,7 +9,6 @@ class UserController {
     });
   }
 
-
   async register(req, res) {
     try {
       await userService.store(req.body);
@@ -20,6 +19,31 @@ class UserController {
       res.status(400).json({ error: error.message });
     }
   }
+
+    //api get all
+    async listUserAdmin(req, res) {
+      try {
+        const admin = await userService.getUser();
+        res.status(200).json({ message: "SUCCES", data: admin });
+      } catch (error) {
+        res.status(500).json({ message: "FAILED" });
+        console.error(error);
+      }
+    }
+  
+    //web
+    async index(req, res) {
+      try {
+        const userData = await userService.getUser();
+  
+        res.render("userAdminList", {
+          user: userData,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  
 }
 
 module.exports = UserController;

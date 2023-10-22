@@ -32,6 +32,15 @@ class UserService {
     const data = await this.userModel.findOne({where : {strEmail}})
     return data;
   }
+
+  async getUser() {
+    try {
+      return await this.userModel.findAll();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 }
 
 module.exports = UserService;

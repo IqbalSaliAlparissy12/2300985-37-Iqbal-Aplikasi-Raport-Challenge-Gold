@@ -27,19 +27,6 @@ class MapelKontroller {
   }
 
 
-  //api get id
-   async mapelDetail(req, res) {
-    try {
-      const id = req.params.id;
-      const mapelData = await mapelService.getMapelId(id);
-      // res.render("kelasEdit", {
-      //     kelas: kelasData,
-      // });
-      res.status(200).json({ message: "SUCCES", data: mapelData});
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   //api
   async mapelAdd(req, res) {
@@ -54,22 +41,19 @@ class MapelKontroller {
   }
 
   
-
-  // async indexEdit(req, res) {
-  //   res.render("mapelEdit");
-  // }
-
   //id Mapel
-  async mapelEdit(req, res) {
+  async mapelDetail(req, res) {
     try {
       const id = req.params.id;
-      const mapeData = await mapelService.getMapelId(id);
+      const mapelData = await mapelService.getMapelId(id);
       res.render("mapelEdit", {
-        mapel: mapeData,
+        mapel: mapelData,
       });
+
     } catch (error) {
       console.log(error);
     }
+    
   }
 
   //api 
