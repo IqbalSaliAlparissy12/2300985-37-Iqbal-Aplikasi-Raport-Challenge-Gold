@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js" />
+    <link rel="stylesheet" href="/css/home.css" />
+  </head>
+  <body>
+    <%- include('navbar'); %>
+
+    <div class="main-content" id="main-content">
+      <div class="container">
+        <h1>Add Absensi Siswa</h1>
+
+        <form id="create-absensi-form">
+          <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
+            <label for="exampleFormControlInput1">Nama Siswa</label>
+            <input
+              type="text"
+              class="form-control"
+              id="strNamaSiswa"
+              placeholder="masukan nama siswa"
+            />
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px">
+            <label for="exampleFormControlSelect1">Kelas</label>
+            <select class="form-control" id="strKelas" required>
+              <option>-- Pilih --</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
+            <label for="exampleFormControlInput1">Jumlah hari sakit</label>
+            <input
+              type="number"
+              class="form-control"
+              id="intSakit"
+              placeholder="masukan jumlah hari sakit"
+            />
+          </div>
+          
+  
+          <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
+            <label for="exampleFormControlInput1">Jumlah hari izin</label>
+            <input
+              type="number"
+              class="form-control"
+              id="intIzin"
+              placeholder="masukan jumlah hari izin"
+            />
+          </div>          
+          <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
+            <label for="exampleFormControlInput1">Jumlah hari alpa</label>
+            <input
+              type="number"
+              class="form-control"
+              id="intAlpa"
+              placeholder="masukan jumlah hari alpa"
+            />
+          </div>
+        
+          <button type="submit" class="btn btn-primary float-right">
+               Add Absensi Siswa
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- script controll library tinymce -->
+    <script src="/js/index.js"></script>
+
+  </body>
+</html>

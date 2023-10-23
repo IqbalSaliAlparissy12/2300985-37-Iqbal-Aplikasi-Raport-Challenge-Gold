@@ -366,15 +366,15 @@ $("#edit-identitas-form").submit(function (event) {
     data: JSON.stringify({
       strNamaSekolah: namaSekolah,
       strAlamat: Alamat,
-      strNIS :NIS,
-      strKodePos : KodePost,
-      strTelpon : telpon,
-      strKelurahan : kelurahan,
-      strKecamatan : kecamatan,
-      strKabupaten : kabupaten,
-      strProvinsi : provinsi,
-      strWebsite :website,
-      strEmail :email
+      strNIS: NIS,
+      strKodePos: KodePost,
+      strTelpon: telpon,
+      strKelurahan: kelurahan,
+      strKecamatan: kecamatan,
+      strKabupaten: kabupaten,
+      strProvinsi: provinsi,
+      strWebsite: website,
+      strEmail: email
     }),
     success: function (response) {
       // Tindakan setelah berhasil
@@ -411,6 +411,112 @@ $(".delete-identitas").click(function () {
     error: function (error) {
       console.error("Terjadi kesalahan saat menghapus identitas:", error);
       alert("Gagal menghapus identitas.");
+    },
+  });
+});
+
+
+//Create Kelas
+$(document).ready(function () {
+  $("#create-absensi-form").submit(function (event) {
+    event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+    // Mengambil data dari formulir
+    let strNamaSiswa = $("#strNamaSiswa").val();
+    let intSakit = $("#intSakit").val();
+    let intIzin = $("#intIzin").val();
+    let intAlpa = $("#intAlpa").val();
+    let strKelas = $("#strKelas").val();
+
+
+    // Mengirim data ke API menggunakan AJAX
+    $.ajax({
+      url: "/api-absensi/raport/absensi", // Ganti dengan URL API sesuai dengan struktur Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ strNamaSiswa: strNamaSiswa, intSakit: intSakit, intIzin: intIzin, intAlpa: intAlpa, strKelas:strKelas }),
+      success: function (response) {
+        // Tindakan setelah berhasil
+        alert("Absensi berhasil ditambah.");
+        // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+        window.location.href = "/absensi";
+      },
+      error: function (error) {
+        // Tindakan jika terjadi kesalahan
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal menyimpan absensi.");
+      },
+    });
+  });
+});
+
+$(".delete-absensi").click(function () {
+  // Menyimpan referensi ke tombol "Hapus" yang diklik
+  var $deleteButton = $(this);
+
+  // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+  const absensiId = $deleteButton.attr("id");
+
+  // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+  $.ajax({
+    url: "/api-absensi/raport/absensi/" + absensiId,
+    type: "DELETE",
+    success: function (response) {
+      // Tindakan setelah berhasil menghapus komentar
+      alert("Absensi berhasil di hapus.");
+
+      // Hapus elemen komentar dari DOM
+      location.reload();
+    },
+    error: function (error) {
+      console.error("Terjadi kesalahan saat menghapus absensi:", error);
+      alert("Gagal menghapus absensi.");
+    },
+  });
+});
+
+// Menangani klik tombol "Edit"
+$(".edit-absensi").click(function () {
+  const selectedAbsensiId = $(this).attr("id");
+  // Redirect ke halaman edit dengan membawa ID kelas
+  window.location.href = `/absensi/edit/${selectedAbsensiId}`;
+});
+
+// EDIT Identitas
+$("#edit-absensi-form").submit(function (event) {
+  event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+  let strNamaSiswa = $("#strNamaSiswa").val();
+  let strKelas = $("#strKelas").val();
+  let intSakit = $("#intSakit").val();
+  let intIzin = $("#intIzin").val();
+  let intAlpa = $("#intAlpa").val();
+
+
+  let id = $("#absensiId").val();
+
+  // Mengirim data ke API menggunakan AJAX
+  $.ajax({
+    url: `/api-absensi/raport/absensi/${id}`, // Gunakan selectedKelasId
+    type: "PUT", // Menggunakan metode PUT untuk pengeditan
+    contentType: "application/json",
+    data: JSON.stringify({
+        strNamaSiswa :strNamaSiswa,
+        strKelas :strKelas,
+        intSakit: intSakit,
+        intIzin: intIzin,
+        intAlpa : intAlpa
+    }),
+    success: function (response) {
+      // Tindakan setelah berhasil
+      alert("Absen siswa berhasil diedit.");
+      // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+      window.location.href = "/absensi";
+    },
+    error: function (error) {
+      // Tindakan jika terjadi kesalahan
+      console.error("Terjadi kesalahan: " + JSON.stringify(error));
+      alert("Gagal menyimpan absensi.");
     },
   });
 });

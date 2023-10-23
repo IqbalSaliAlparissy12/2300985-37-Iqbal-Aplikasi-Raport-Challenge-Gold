@@ -53,7 +53,7 @@ class AbsensiService {
     }
   }
 
-  async addIdentitas(payload) {
+  async addAbsensi(payload) {
     const date = new Date();
     const { strNamaSiswa, intSakit, intIzin, intAlpa, strKelas } = payload;
 

@@ -29,11 +29,6 @@ class AbsensiKontroller {
     }
 
 
-    
-
-  
-  
-  
     //api
     async absensiAdd(req, res) {
       const payload = req.body;
