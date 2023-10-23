@@ -14,10 +14,10 @@
     <div class="main-content" id="main-content">
       <div class="container">
         <!-- Konten utama berada di sini -->
-        <h1>Identitas Sekolah</h1>
+        <h1>Absensi Siswa</h1>
 
         <a
-          href="/identitas/add"
+          href="/absensi/add"
           class="btn btn-success mb-2"
           style="margin-top: 20px; margin-bottom: 20px";
           >Add</a
@@ -26,52 +26,42 @@
         <div  class="table-responsive"  style="margin-top: 20px;">
           <table class="table">
             <caption>
-              Identitas Sekolah List
+              Absensi Siswa List
             </caption>
             <thead>
               <tr>
                 <th scope="col">No</th>
-                <th scope="col">Nama Sekolah</th>
-                <th scope="col">Nomor Induk Sekolah</th>
-                <th scope="col">Alamat</th>
-                <th scope="col">Kode Pos</th>
-                <th scope="col">Telpon</th>
-                <th scope="col">Kelurahan</th>
-                <th scope="col">Kecamatan</th>
-                <th scope="col">Kabupaten</th>
-                <th scope="col">Provinsi</th>
-                <th scope="col">Website</th>
-                <th scope="col">Email</th>
+                <th scope="col">Nama Siswa</th>
+                <th scope="col">Kelas</th>
+                <th scope="col">Sakit</th>
+                <th scope="col">Izin</th>
+                <th scope="col">Alpa</th>
                 <th scope="col">Action</th>
+
             </tr>
             </thead>
             
             <tbody>
-              <% identitas.forEach((data,index) => { %>
+              <% absensi.forEach((data,index) => { %>
                 <tr>
                   <th scope="row"><%= index + 1 %></th>
-                  <td><%= data.strNamaSekolah %></td>
-                  <td><%= data.strNIS %></td>
-                  <td><%= data.strAlamat %></td>
-                  <td><%= data.strKodePos %></td>
-                  <td><%= data.strTelpon %></td>
-                  <td><%= data.strKelurahan %></td>
-                  <td><%= data.strKecamatan %></td>
-                  <td><%= data.strKabupaten %></td>
-                  <td><%= data.strProvinsi %></td>
-                  <td><%= data.strWebsite %></td>
-                  <td><%= data.strEmail %></td>
+                  <td><%= data.strNamaSiswa %></td>
+                  <td><%= data.intSakit %></td>
+                  <td><%= data.intIzin %></td>
+                  <td><%= data.intAlpa %></td>
+                  <td><%= data.strKelas %></td>
+                 
                   <td>
                     <button
                       id="<%= data.id %>"
-                      class="btn btn-info btn-sm edit-identitas"
+                      class="btn btn-info btn-sm edit-absensi"
                     >
                       Edit
                     </button>
   
                     <button
                       id="<%= data.id %>"
-                      class="btn btn-danger btn-sm delete-identitas"
+                      class="btn btn-danger btn-sm delete-absensi"
                     >
                       Hapus
                     </button>

@@ -28,7 +28,6 @@ $(document).ready(function () {
   });
 });
 
-
 $(".delete-kelas").click(function () {
   // Menyimpan referensi ke tombol "Hapus" yang diklik
   var $deleteButton = $(this);
@@ -54,14 +53,11 @@ $(".delete-kelas").click(function () {
   });
 });
 
-
-
 // Menangani klik tombol "Edit"
 $(".edit-kelas").click(function () {
   const selectedKelasId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/kelas/edit/${selectedKelasId}`;
-
 });
 
 // EDIT Kelas
@@ -71,7 +67,7 @@ $("#edit-kelas-form").submit(function (event) {
   let kelas = $("#kelas").val();
   let strKelasDetail = $("#strKelasDetail").val();
 
-  let id = $("#kelasId").val()
+  let id = $("#kelasId").val();
 
   // Mengirim data ke API menggunakan AJAX
   $.ajax({
@@ -152,7 +148,7 @@ $("#registration-wali-form").submit(function (event) {
         strEmail: email,
         strPassword: password,
         strRole: role,
-        strKelas: kelas
+        strKelas: kelas,
       }),
       success: function (response) {
         // Tampilkan pesan sukses atau redirect ke halaman login
@@ -166,8 +162,6 @@ $("#registration-wali-form").submit(function (event) {
     });
   }
 });
-
-
 
 //Create Mapel
 $(document).ready(function () {
@@ -183,7 +177,10 @@ $(document).ready(function () {
       url: "/api-mapel/raport/mapel", // Ganti dengan URL API sesuai dengan struktur Anda
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ strKelas: kelas, strMataPelajaran: strMataPelajaran }),
+      data: JSON.stringify({
+        strKelas: kelas,
+        strMataPelajaran: strMataPelajaran,
+      }),
       success: function (response) {
         // Tindakan setelah berhasil
         alert("Mata Pelajaran berhasil ditambah.");
@@ -229,7 +226,6 @@ $(".edit-mapel").click(function () {
   const selectedMapelId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/mapel/edit/${selectedMapelId}`;
-
 });
 
 // EDIT Mata Pelajaran
@@ -239,7 +235,7 @@ $("#edit-mapel-form").submit(function (event) {
   let mataPelajaran = $("#strMataPelajaran").val();
   let kelas = $("#strKelas").val();
 
-  let id = $("#mapelId").val()
+  let id = $("#mapelId").val();
 
   // Mengirim data ke API menggunakan AJAX
   $.ajax({
@@ -260,7 +256,6 @@ $("#edit-mapel-form").submit(function (event) {
     },
   });
 });
-
 
 $(".delete-wali").click(function () {
   // Menyimpan referensi ke tombol "Hapus" yang diklik
@@ -287,7 +282,6 @@ $(".delete-wali").click(function () {
   });
 });
 
-
 //Create Identitas Sekolah
 $(document).ready(function () {
   $("#create-identitas-form").submit(function (event) {
@@ -306,13 +300,24 @@ $(document).ready(function () {
     let strWebsite = $("#strWebsite").val();
     let strEmail = $("#strEmail").val();
 
-
     // Mengirim data ke API menggunakan AJAX
     $.ajax({
       url: "/api-identitas/raport/identitas", // Ganti dengan URL API sesuai dengan struktur Anda
       type: "POST",
       contentType: "application/json",
-      data: JSON.stringify({ strNamaSekolah: strNamaSekolah, strNIS: strNIS, strAlamat: strAlamat, strKodePos: strKodePos, strTelpon: strTelpon, strKelurahan: strKelurahan, strKecamatan: strKecamatan, strKabupaten: strKabupaten, strProvinsi: strProvinsi, strWebsite: strWebsite, strEmail: strEmail }),
+      data: JSON.stringify({
+        strNamaSekolah: strNamaSekolah,
+        strNIS: strNIS,
+        strAlamat: strAlamat,
+        strKodePos: strKodePos,
+        strTelpon: strTelpon,
+        strKelurahan: strKelurahan,
+        strKecamatan: strKecamatan,
+        strKabupaten: strKabupaten,
+        strProvinsi: strProvinsi,
+        strWebsite: strWebsite,
+        strEmail: strEmail,
+      }),
       success: function (response) {
         // Tindakan setelah berhasil
         alert("Identitas sekolah berhasil ditambah.");
@@ -333,34 +338,79 @@ $(".edit-identitas").click(function () {
   const selectedIdentitasId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/identitas/edit/${selectedIdentitasId}`;
-
 });
 
 // EDIT Identitas
 $("#edit-identitas-form").submit(function (event) {
   event.preventDefault(); // Menghentikan pengiriman formulir secara default
 
-  let mataPelajaran = $("#strMataPelajaran").val();
-  let kelas = $("#strKelas").val();
+  let namaSekolah = $("#strNamaSekolah").val();
+  let NIS = $("#strNIS").val();
+  let Alamat = $("#strAlamat").val();
+  let KodePost = $("#strKodePos").val();
+  let telpon = $("#strTelpon").val();
+  let kelurahan = $("#strKelurahan").val();
+  let kecamatan = $("#strKecamatan").val();
+  let kabupaten = $("#strKabupaten").val();
+  let provinsi = $("#strProvinsi").val();
+  let website = $("#strWebsite").val();
+  let email = $("#strEmail").val();
 
-  let id = $("#mapelId").val()
+  let id = $("#identitasId").val();
 
   // Mengirim data ke API menggunakan AJAX
   $.ajax({
-    url: `/api-mapel/raport/mapel/${id}`, // Gunakan selectedKelasId
+    url: `/api-identitas/raport/identitas/${id}`, // Gunakan selectedKelasId
     type: "PUT", // Menggunakan metode PUT untuk pengeditan
     contentType: "application/json",
-    data: JSON.stringify({ strMataPelajaran: mataPelajaran, strKelas: kelas }),
+    data: JSON.stringify({
+      strNamaSekolah: namaSekolah,
+      strAlamat: Alamat,
+      strNIS :NIS,
+      strKodePos : KodePost,
+      strTelpon : telpon,
+      strKelurahan : kelurahan,
+      strKecamatan : kecamatan,
+      strKabupaten : kabupaten,
+      strProvinsi : provinsi,
+      strWebsite :website,
+      strEmail :email
+    }),
     success: function (response) {
       // Tindakan setelah berhasil
-      alert("Mata pelajaran berhasil diedit.");
+      alert("Identitas sekolah berhasil diedit.");
       // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
-      window.location.href = "/mapel";
+      window.location.href = "/identitas";
     },
     error: function (error) {
       // Tindakan jika terjadi kesalahan
       console.error("Terjadi kesalahan: " + JSON.stringify(error));
-      alert("Gagal menyimpan mata pelajaran.");
+      alert("Gagal menyimpan identitas.");
+    },
+  });
+});
+
+$(".delete-identitas").click(function () {
+  // Menyimpan referensi ke tombol "Hapus" yang diklik
+  var $deleteButton = $(this);
+
+  // Mengambil ID komentar dari atribut id pada tombol "Hapus"
+  const identitasId = $deleteButton.attr("id");
+
+  // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
+  $.ajax({
+    url: "/api-identitas/raport/identitas/" + identitasId,
+    type: "DELETE",
+    success: function (response) {
+      // Tindakan setelah berhasil menghapus komentar
+      alert("Identitas berhasil di hapus.");
+
+      // Hapus elemen komentar dari DOM
+      location.reload();
+    },
+    error: function (error) {
+      console.error("Terjadi kesalahan saat menghapus identitas:", error);
+      alert("Gagal menghapus identitas.");
     },
   });
 });

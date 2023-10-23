@@ -51,7 +51,7 @@ class IdentitasService {
 
     async addIdentitas(payload) {
         const date = new Date();
-        const { strNamaSekolah, strNIS, strAlamat, strKodePos, strTelpon, strKelurahan, strKecamatan, strKabuten, strProvinsi, strWebsite, strEmail } = payload;
+        const { strNamaSekolah, strNIS, strAlamat, strKodePos, strTelpon, strKelurahan, strKecamatan, strKabupaten, strProvinsi, strWebsite, strEmail } = payload;
         const inputIdentitas = this.newIdentitas.create({
             strNamaSekolah: strNamaSekolah,
             strNIS: strNIS,
@@ -60,7 +60,7 @@ class IdentitasService {
             strTelpon: strTelpon,
             strKelurahan: strKelurahan,
             strKecamatan: strKecamatan,
-            strKabuten: strKabuten,
+            strKabupaten: strKabupaten,
             strProvinsi: strProvinsi,
             strWebsite: strWebsite,
             strEmail: strEmail,

@@ -16,6 +16,7 @@
         <h1>Edit Identitas Sekolah</h1>
 
         <form id="edit-identitas-form">
+          <input type="hidden" name="identitasId" id="identitasId" value="<%= identitas.id %>"> 
           <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
             <label for="exampleFormControlInput1">Nama Sekolah</label>
             <input
@@ -47,15 +48,15 @@
               id="strAlamat"
               placeholder="Masukkan alamat"
               rows="4" 
-              value="<%= identitas.strAlamat %>"
 
-            ></textarea>
+
+            ><%= identitas.strAlamat %></textarea>
           </div>
           
           <div class="form-group" style="margin-bottom: 15px; margin-top: 30px">
             <label for="exampleFormControlInput1">Kode POS</label>
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="strKodePos"
               placeholder="masukan kode pos"

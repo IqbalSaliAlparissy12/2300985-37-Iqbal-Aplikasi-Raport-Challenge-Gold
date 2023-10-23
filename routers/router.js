@@ -12,6 +12,8 @@ const apiMapel = require("./api/api.mapel");
 const wali = require("./userWali");
 const identitas = require("./identitas");
 const apiIdentitas = require("./api/api.identitas");
+const apiAbsensi = require("./api/api.absensi");
+const absensi = require("./absensi");
 
 
 const router = express.Router();
@@ -19,6 +21,7 @@ const router = express.Router();
 router.use('/api', apiKelas);
 router.use('/api-mapel', apiMapel);
 router.use('/api-identitas', apiIdentitas);
+router.use('/api-absensi', apiAbsensi);
 router.use("/home", home);
 router.use("/", auth);
 router.use("/wali", userWali);
@@ -29,6 +32,7 @@ router.use("/siswa", siswa);
 router.use("/users", user);
 router.use("/users", wali); 
 router.use("/identitas", identitas);
+router.use("/absensi", absensi);
 
 
 module.exports = router;
