@@ -61,7 +61,7 @@ $(".edit-kelas").click(function () {
   const selectedKelasId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/kelas/edit/${selectedKelasId}`;
-  
+
 });
 
 // EDIT Kelas
@@ -226,10 +226,10 @@ $(".delete-mapel").click(function () {
 
 // Menangani klik tombol "Edit"
 $(".edit-mapel").click(function () {
- const  selectedMapelId = $(this).attr("id");
+  const selectedMapelId = $(this).attr("id");
   // Redirect ke halaman edit dengan membawa ID kelas
   window.location.href = `/mapel/edit/${selectedMapelId}`;
-  
+
 });
 
 // EDIT Mata Pelajaran
@@ -271,7 +271,7 @@ $(".delete-wali").click(function () {
 
   // Mengirim permintaan DELETE ke API dengan menggunakan ID komentar
   $.ajax({
-    url: "/api/raport/users/wali/" + waliIdId,
+    url: "/api/raport/users/wali/" + waliId,
     type: "DELETE",
     success: function (response) {
       // Tindakan setelah berhasil menghapus komentar
@@ -283,6 +283,84 @@ $(".delete-wali").click(function () {
     error: function (error) {
       console.error("Terjadi kesalahan saat menghapus wali kelas:", error);
       alert("Gagal menghapus wali kelas.");
+    },
+  });
+});
+
+
+//Create Identitas Sekolah
+$(document).ready(function () {
+  $("#create-identitas-form").submit(function (event) {
+    event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+    // Mengambil data dari formulir
+    let strNamaSekolah = $("#strNamaSekolah").val();
+    let strNIS = $("#strNIS").val();
+    let strAlamat = $("#strAlamat").val();
+    let strKodePos = $("#strKodePos").val();
+    let strTelpon = $("#strTelpon").val();
+    let strKelurahan = $("#strKelurahan").val();
+    let strKecamatan = $("#strKecamatan").val();
+    let strKabupaten = $("#strKabupaten").val();
+    let strProvinsi = $("#strProvinsi").val();
+    let strWebsite = $("#strWebsite").val();
+    let strEmail = $("#strEmail").val();
+
+
+    // Mengirim data ke API menggunakan AJAX
+    $.ajax({
+      url: "/api-identitas/raport/identitas", // Ganti dengan URL API sesuai dengan struktur Anda
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ strNamaSekolah: strNamaSekolah, strNIS: strNIS, strAlamat: strAlamat, strKodePos: strKodePos, strTelpon: strTelpon, strKelurahan: strKelurahan, strKecamatan: strKecamatan, strKabupaten: strKabupaten, strProvinsi: strProvinsi, strWebsite: strWebsite, strEmail: strEmail }),
+      success: function (response) {
+        // Tindakan setelah berhasil
+        alert("Identitas sekolah berhasil ditambah.");
+        // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+        window.location.href = "/identitas";
+      },
+      error: function (error) {
+        // Tindakan jika terjadi kesalahan
+        console.error("Terjadi kesalahan: " + JSON.stringify(error));
+        alert("Gagal menyimpan identitas.");
+      },
+    });
+  });
+});
+
+// Menangani klik tombol "Edit"
+$(".edit-identitas").click(function () {
+  const selectedIdentitasId = $(this).attr("id");
+  // Redirect ke halaman edit dengan membawa ID kelas
+  window.location.href = `/identitas/edit/${selectedIdentitasId}`;
+
+});
+
+// EDIT Identitas
+$("#edit-identitas-form").submit(function (event) {
+  event.preventDefault(); // Menghentikan pengiriman formulir secara default
+
+  let mataPelajaran = $("#strMataPelajaran").val();
+  let kelas = $("#strKelas").val();
+
+  let id = $("#mapelId").val()
+
+  // Mengirim data ke API menggunakan AJAX
+  $.ajax({
+    url: `/api-mapel/raport/mapel/${id}`, // Gunakan selectedKelasId
+    type: "PUT", // Menggunakan metode PUT untuk pengeditan
+    contentType: "application/json",
+    data: JSON.stringify({ strMataPelajaran: mataPelajaran, strKelas: kelas }),
+    success: function (response) {
+      // Tindakan setelah berhasil
+      alert("Mata pelajaran berhasil diedit.");
+      // Redirect ke halaman lain atau lakukan sesuatu yang sesuai kebutuhan Anda
+      window.location.href = "/mapel";
+    },
+    error: function (error) {
+      // Tindakan jika terjadi kesalahan
+      console.error("Terjadi kesalahan: " + JSON.stringify(error));
+      alert("Gagal menyimpan mata pelajaran.");
     },
   });
 });
