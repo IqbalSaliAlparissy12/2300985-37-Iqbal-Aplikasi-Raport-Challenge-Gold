@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js">
-    <link rel="stylesheet" href="/css/home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bootstrap/js/bootstrap.min.js">
+  <link rel="stylesheet" href="/css/home.css">
 
 </head>
+
 <body>
-    <%- include('navbar'); %>
-    
-    
+  <%- include('navbar'); %>
+
+
     <div class="main-content" id="main-content">
-        <div class="container">
-          <div>Halaman Dashboard</div>
+      <div class="container">
+        <div class="table-responsive" style="margin-top: 20px">
+          <h1 style="text-align: center; margin-bottom: 50px; color:darkcyan">Dashboard Admin per Yayasan</h1>
+
+          <table class="table">
+            <caption>
+              List of School
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Sekolah</th>
+                <th scope="col">Jumlah Wali Kelas</th>
+                <th scope="col">Jumlah Guru</th>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>SDIT 1 Al Hasanah</td>
+                <td>10</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>SDIT 2 Al Hasanah</td>
+                <td>5</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>TKIT Al Hasanah 1</td>
+                <td>5</td>
+                <td>20</td>
+              </tr>
+  
+              <tr>
+                <th scope="row">4</th>
+                <td>TKIT Al Hasanah 2</td>
+                <td>5</td>
+                <td>20</td>
+              </tr>
+  
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
+
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
